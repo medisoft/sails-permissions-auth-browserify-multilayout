@@ -89,6 +89,8 @@ module.exports = {
     // entire scope available to it (uses underscore/JST/ejs syntax).
     // Then the file is copied into the specified destination (on the left).
     // './:filename': { template: 'example.template.js' },
+    './tasks/register/compileAssets.js': { template: 'compileAssets.template.js' },
+    
     './tasks/config/browserify.js': { template: 'browserify-config.template.js' },
     './tasks/config/babel.js': { template: 'babel-config.template.js' },
     './tasks/config/ngannotate.js': { template: 'ngannotate-config.template.js' },
