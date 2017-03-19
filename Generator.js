@@ -90,10 +90,11 @@ module.exports = {
     // Then the file is copied into the specified destination (on the left).
     // './:filename': { template: 'example.template.js' },
     './tasks/register/compileAssets.js': { template: 'compileAssets.template.js' },
+    './tasks/register/multilayout-linker.js': { template: 'multilayout-linker.template.js' },
 
     './tasks/config/browserify.js': { template: 'browserify-config.template.js' },
-    './tasks/config/babel.js': { template: 'babel-config.template.js' },
-    './tasks/config/ngannotate.js': { template: 'ngannotate-config.template.js' },
+    // './tasks/config/babel.js': { template: 'babel-config.template.js' },
+    // './tasks/config/ngannotate.js': { template: 'ngannotate-config.template.js' },
     './tasks/config/gettext.js': { template: 'gettext-config.template.js' },
     './tasks/register/translations.js': { template: 'translations-register.template.js' },
 
