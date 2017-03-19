@@ -1,6 +1,6 @@
 {
   "name": "sails-generate-sails-permissions-auth-browserify-multilayout",
-  "version": "0.10.5",
+  "version": "0.10.6",
   "description": "sails generate sails-permissions-auth-browserify-multilayout",
   "main": "Generator.js",
   "scripts": {
