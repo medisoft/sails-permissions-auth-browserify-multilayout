@@ -90,27 +90,19 @@ module.exports = {
     // Then the file is copied into the specified destination (on the left).
     // './:filename': { template: 'example.template.js' },
     './tasks/register/compileAssets.js': { template: 'compileAssets.template.js' },
-    
+
     './tasks/config/browserify.js': { template: 'browserify-config.template.js' },
     './tasks/config/babel.js': { template: 'babel-config.template.js' },
     './tasks/config/ngannotate.js': { template: 'ngannotate-config.template.js' },
     './tasks/config/gettext.js': { template: 'gettext-config.template.js' },
     './tasks/register/translations.js': { template: 'translations-register.template.js' },
+
+    './views/layouts': { folder: { } },
     './app': { folder: { } },
 
+    './views/layouts/public.ejs': { template: 'layout.template.ejs' },
     './app/public': { folder: {} },
-    './app/user': { folder: {} },
-    './app/admin': { folder: {} },
-
     './app/public/app.js': { template: 'browserifyapp.template.js' },
-    './app/user/app.js': { template: 'browserifyapp.template.js' },
-    './app/admin/app.js': { template: 'browserifyapp.template.js' },
-
-    './assets/app/public/app.js': { template: 'webapp.template.js' },
-    './assets/app/user/app.js': { template: 'webapp.template.js' },
-    './assets/app/admin/app.js': { template: 'webapp.template.js' },
-
-
     './app/public/views': { folder: {} },
     './app/public/controllers': { folder: {} },
     './app/public/models': { folder: {} },
@@ -122,34 +114,10 @@ module.exports = {
     './app/public/reducers': { folder: {} },
     './app/public/actions': { folder: {} },
 
-    './app/user/views': { folder: {} },
-    './app/user/controllers': { folder: {} },
-    './app/user/models': { folder: {} },
-    './app/user/directives': { folder: {} },
-    './app/user/filters': { folder: {} },
-    './app/user/services': { folder: {} },
-    './app/user/translations': { folder: {} },
-    './app/user/components': { folder: {} },
-    './app/user/reducers': { folder: {} },
-    './app/user/actions': { folder: {} },
-
-    './app/admin/views': { folder: {} },
-    './app/admin/controllers': { folder: {} },
-    './app/admin/models': { folder: {} },
-    './app/admin/directives': { folder: {} },
-    './app/admin/filters': { folder: {} },
-    './app/admin/services': { folder: {} },
-    './app/admin/translations': { folder: {} },
-    './app/admin/components': { folder: {} },
-    './app/admin/reducers': { folder: {} },
-    './app/admin/actions': { folder: {} },
-
+/*
     './assets/app': { folder: {} },
     './assets/app/public': { folder: {} },
-    './assets/app/user': { folder: {} },
-    './assets/app/admin': { folder: {} },
-
-
+    './assets/app/public/app.js': { template: 'webapp.template.js' },
     './assets/app/public/views': { folder: {} },
     './assets/app/public/controllers': { folder: {} },
     './assets/app/public/models': { folder: {} },
@@ -160,28 +128,7 @@ module.exports = {
     './assets/app/public/components': { folder: {} },
     './assets/app/public/reducers': { folder: {} },
     './assets/app/public/actions': { folder: {} },
-
-    './assets/app/user/views': { folder: {} },
-    './assets/app/user/controllers': { folder: {} },
-    './assets/app/user/models': { folder: {} },
-    './assets/app/user/directives': { folder: {} },
-    './assets/app/user/filters': { folder: {} },
-    './assets/app/user/services': { folder: {} },
-    './assets/app/user/translations': { folder: {} },
-    './assets/app/user/components': { folder: {} },
-    './assets/app/user/reducers': { folder: {} },
-    './assets/app/user/actions': { folder: {} },
-
-    './assets/app/admin/views': { folder: {} },
-    './assets/app/admin/controllers': { folder: {} },
-    './assets/app/admin/models': { folder: {} },
-    './assets/app/admin/directives': { folder: {} },
-    './assets/app/admin/filters': { folder: {} },
-    './assets/app/admin/services': { folder: {} },
-    './assets/app/admin/translations': { folder: {} },
-    './assets/app/admin/components': { folder: {} },
-    './assets/app/admin/reducers': { folder: {} },
-    './assets/app/admin/actions': { folder: {} },
+*/
   },
 
 

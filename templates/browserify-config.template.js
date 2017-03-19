@@ -15,13 +15,16 @@ module.exports = function (grunt) {
   var version = grunt.file.readJSON('package.json').version;
   var config = {
     options: {
-      transform: [['babelify', {presets: ['es2015', 'react', 'stage-1']}], [require('grunt-react').browserify]]
+      transform: [
+        ['babelify', {presets: ['es2015', 'react', 'stage-1']}],
+        require('grunt-react').browserify,
+        require('browserify-ngannotate')
+      ]
     }
   };
   var paths = grunt.file.expand({}, ['./app/*']);
   for (k in paths) {
     var p = paths[k];
-    console.log('vale ' + p)
     if (grunt.file.exists(p + '/app.js')) {
       var segment = p.split('/')[2];
       config[p] = {
