@@ -16,6 +16,11 @@
   "author": "balderdashy",
   "license": "MIT",
   "dependencies": {
+    "grunt-angular-gettext": "^2.3.3",
+    "grunt-babel": "^6.0.0",
+    "grunt-browserify": "^5.0.0",
+    "grunt-ng-annotate": "^3.0.0",
+    "grunt-react": "^0.12.3",
     "lodash": ">=2.4.x",
     "merge-defaults": ">=0.1.0",
     "sails-auth": "^2.1.3",

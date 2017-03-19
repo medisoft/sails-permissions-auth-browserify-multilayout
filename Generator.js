@@ -94,7 +94,7 @@ module.exports = {
     './tasks/config/ngannotate.js': { template: 'ngannotate-config.template.js' },
     './tasks/config/gettext.js': { template: 'gettext-config.template.js' },
     './tasks/register/translations.js': { template: 'translations-register.template.js' },
-    './app': { folder: {} },
+    './app': { folder: { } },
 
     './app/public': { folder: {} },
     './app/user': { folder: {} },
