@@ -97,7 +97,10 @@ module.exports = {
     // Then the file is copied into the specified destination (on the left).
     // './:filename': { template: 'example.template.js' },
     './tasks/register/compileAssets.js': {template: 'compileAssets.template.js'},
+    './tasks/register/linkAssets.js': {template: 'linkAssets.template.js'},
     './tasks/config/sails-linker.js': {template: 'multilayout-linker.template.js'},
+    './tasks/config/concat.js': {template: 'concat.template.js'},
+    './tasks/config/uglify.js': {template: 'uglify.template.js'},
     './tasks/multilayouts.js': {template: 'multilayouts.template.js'},
 
     './tasks/config/browserify.js': {template: 'browserify-config.template.js'},

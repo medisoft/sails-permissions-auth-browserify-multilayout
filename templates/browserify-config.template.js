@@ -29,7 +29,7 @@ module.exports = function (grunt) {
       var segment = p.split('/')[2];
       config[p] = {
         src: p + '/app.js',
-        dest: 'assets/js/browserify/browserify-' + segment + '.js'
+        dest: 'assets/multilayout/browserify-' + segment + '.js'
       }
     }
   }
