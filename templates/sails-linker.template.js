@@ -27,7 +27,7 @@
  *   https://github.com/Zolmeister/grunt-sails-linker
  *
  */
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
   var config = {
     devJs: {
@@ -280,14 +280,14 @@ module.exports = function(grunt) {
   };
 
   var layouts = require('../multilayouts').layouts;
-  for(var i in layouts) {
-    var layout=layouts[i];
+  for (var i in layouts) {
+    var layout = layouts[i];
     var jsFiles = ['multilayout/**/*-' + layout + '.js'];
     jsFiles = jsFiles.map(function (jsPath) {
       return require('path').join('.tmp/public/', jsPath);
     });
 
-    config[layout+'_devJs'] = {
+    config[layout + '_devJs'] = {
       options: {
         startTag: '<!--SCRIPTS-' + layout + '-->',
         endTag: '<!--SCRIPTS-' + layout + ' END-->',
@@ -300,6 +300,22 @@ module.exports = function(grunt) {
         'views/**/*.ejs': jsFiles
       }
     };
+
+    config[layout + '_prodJs'] = {
+      options: {
+        startTag: '<!--SCRIPTS-' + layout + '-->',
+        endTag: '<!--SCRIPTS-' + layout + ' END-->',
+        fileTmpl: '<script src="%s"></script>',
+        appRoot: '.tmp/public'
+      },
+      files: {
+        '.tmp/public/**/*.html': ['.tmp/public/min/production-' + layout + '.min.js'],
+        'views/**/*.html': ['.tmp/public/min/production-' + layout + '.min.js'],
+        'views/**/*.ejs': ['.tmp/public/min/production-' + layout + '.min.js']
+      }
+    };
+
+
   }
 
 

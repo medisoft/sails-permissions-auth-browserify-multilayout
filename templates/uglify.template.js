@@ -23,7 +23,7 @@ module.exports = function (grunt) {
     var layout = layouts[i];
     config[layout] = {
       src: '.tmp/public/concat/production-'+layout+'.js',
-      dest: '.tmp/public/min/production-'+layout+'.js'
+      dest: '.tmp/public/min/production-'+layout+'.min.js'
     }
   }
 
