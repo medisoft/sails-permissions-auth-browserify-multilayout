@@ -21,6 +21,8 @@
     "babel-preset-stage-1": "^6.22.0",
     "babelify": "^7.3.0",
     "browserify-ngannotate": "^2.0.0",
+    "files-exist": "^1.0.2",
+    "grunt": "^1.0.1",
     "grunt-angular-gettext": "^2.3.3",
     "grunt-babel": "^6.0.0",
     "grunt-browserify": "^5.0.0",

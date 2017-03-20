@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%=typeof title == 'undefined' ? 'New Sails App' : title%></title>
+  <title><%="<"+"%=typeof title == 'undefined' ? 'New Sails App' : title%"+">"%></title>
 
   <!-- Viewport mobile tag for sensible mobile support -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
   <!--
+
+      You can configure layouts using the routes.js in config like this:
+
+      '/<%=filename%>': {
+        view: 'some-view-file',
+        locals: {
+          layout: '<%=filename%>'
+        }
+      },
+
+
       Stylesheets and Preprocessors
       ==============================
 
@@ -30,12 +41,12 @@
       You can use STYLES STYLES-<NAME OF LAYOUT>
   -->
 
-  <!--STYLES-->
-  <!--STYLES END-->
+  <!--STYLES-<%=filename%>-->
+  <!--STYLES-<%=filename%> END-->
 </head>
 
 <body>
-<%- body %>
+<%="<"+"%- body %"+">"%>
 
 
 
@@ -62,9 +73,9 @@
     You can use TEMPLATES TEMPLATES-<NAME OF LAYOUT>
 -->
 
-<!--TEMPLATES-->
+<!--TEMPLATES-<%=filename%>-->
 
-<!--TEMPLATES END-->
+<!--TEMPLATES-<%=filename%> END-->
 
 
 <!--
@@ -91,7 +102,7 @@
   You can use SCRIPTS SCRIPTS-<NAME OF LAYOUT>
 -->
 
-<!--SCRIPTS-->
-<!--SCRIPTS END-->
+<!--SCRIPTS-<%=filename%>-->
+<!--SCRIPTS-<%=filename%> END-->
 </body>
 </html>

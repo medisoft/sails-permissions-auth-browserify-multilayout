@@ -4,6 +4,7 @@
 
 var util = require('util');
 var _ = require('lodash');
+var grunt = require('grunt');
 _.defaults = require('merge-defaults');
 
 
@@ -37,9 +38,9 @@ module.exports = {
     // e.g. if someone runs:
     // $ sails generate sails-permissions-auth-browserify-multilayout user find create update
     // then `scope.args` would be `['user', 'find', 'create', 'update']`
-    // if (!scope.args[0]) {
-    //   return cb( new Error('Please provide a name for this sails-permissions-auth-browserify-multilayout.') );
-    // }
+    if (!scope.args[0]) {
+      return cb(new Error('Please provide a name for this sails-permissions-auth-browserify-multilayout.'));
+    }
 
     // scope.rootPath is the base path for this generator
     //
@@ -49,7 +50,7 @@ module.exports = {
     // And someone ran this generator from `/Users/dbowie/sailsStuff`,
     // then `/Users/dbowie/sailsStuff/Foobar.md` would be created.
     if (!scope.rootPath) {
-      return cb( INVALID_SCOPE_VARIABLE('rootPath') );
+      return cb(INVALID_SCOPE_VARIABLE('rootPath'));
     }
 
 
@@ -62,14 +63,20 @@ module.exports = {
     // scope.filename = scope.args[0];
 
     // Add other stuff to the scope for use in our templates:
-    scope.whatIsThis = 'an example file created at '+scope.createdAt;
+    // scope.whatIsThis = 'an example file created at '+scope.createdAt;
+    scope.layout = [scope.args[0]];
+    scope.filename = scope.args[0];
+
+    if (grunt.file.exists('./tasks/multilayouts.js')) {
+      var existentes = require('../tasks/multilayouts.js')
+      scope.layout = _.union(scope.layout, existentes.layouts);
+    }
 
     // When finished, we trigger a callback with no error
     // to begin generating files/folders as specified by
     // the `targets` below.
     cb();
   },
-
 
 
   /**
@@ -89,47 +96,46 @@ module.exports = {
     // entire scope available to it (uses underscore/JST/ejs syntax).
     // Then the file is copied into the specified destination (on the left).
     // './:filename': { template: 'example.template.js' },
-    './tasks/register/compileAssets.js': { template: 'compileAssets.template.js' },
-    './tasks/register/multilayout-linker.js': { template: 'multilayout-linker.template.js' },
+    './tasks/register/compileAssets.js': {template: 'compileAssets.template.js'},
+    './tasks/config/sails-linker.js': {template: 'multilayout-linker.template.js'},
+    './tasks/multilayouts.js': {template: 'multilayouts.template.js'},
 
-    './tasks/config/browserify.js': { template: 'browserify-config.template.js' },
-    // './tasks/config/babel.js': { template: 'babel-config.template.js' },
-    // './tasks/config/ngannotate.js': { template: 'ngannotate-config.template.js' },
-    './tasks/config/gettext.js': { template: 'gettext-config.template.js' },
-    './tasks/register/translations.js': { template: 'translations-register.template.js' },
+    './tasks/config/browserify.js': {template: 'browserify-config.template.js'},
+    './tasks/config/gettext.js': {template: 'gettext-config.template.js'},
+    './tasks/register/translations.js': {template: 'translations-register.template.js'},
 
-    './views/layouts': { folder: { } },
-    './app': { folder: { } },
+    // './views/layouts': {folder: {}},
+    // './app': {folder: {}},
 
-    './views/layouts/public.ejs': { template: 'layout.template.ejs' },
-    './app/public': { folder: {} },
-    './app/public/app.js': { template: 'browserifyapp.template.js' },
-    './app/public/views': { folder: {} },
-    './app/public/controllers': { folder: {} },
-    './app/public/models': { folder: {} },
-    './app/public/directives': { folder: {} },
-    './app/public/filters': { folder: {} },
-    './app/public/services': { folder: {} },
-    './app/public/translations': { folder: {} },
-    './app/public/components': { folder: {} },
-    './app/public/reducers': { folder: {} },
-    './app/public/actions': { folder: {} },
+    './views/layouts/:filename.ejs': {template: 'layout.template.ejs'},
+    './app/:filename': {folder: {}},
+    './app/:filename/app.js': {template: 'browserifyapp.template.js'},
+    './app/:filename/views': {folder: {}},
+    './app/:filename/controllers': {folder: {}},
+    './app/:filename/models': {folder: {}},
+    './app/:filename/directives': {folder: {}},
+    './app/:filename/filters': {folder: {}},
+    './app/:filename/services': {folder: {}},
+    './app/:filename/translations': {folder: {}},
+    './app/:filename/components': {folder: {}},
+    './app/:filename/reducers': {folder: {}},
+    './app/:filename/actions': {folder: {}},
 
-/*
-    './assets/app': { folder: {} },
-    './assets/app/public': { folder: {} },
-    './assets/app/public/app.js': { template: 'webapp.template.js' },
-    './assets/app/public/views': { folder: {} },
-    './assets/app/public/controllers': { folder: {} },
-    './assets/app/public/models': { folder: {} },
-    './assets/app/public/directives': { folder: {} },
-    './assets/app/public/filters': { folder: {} },
-    './assets/app/public/services': { folder: {} },
-    './assets/app/public/translations': { folder: {} },
-    './assets/app/public/components': { folder: {} },
-    './assets/app/public/reducers': { folder: {} },
-    './assets/app/public/actions': { folder: {} },
-*/
+    /*
+     './assets/app': { folder: {} },
+     './assets/app/:filename': { folder: {} },
+     './assets/app/:filename/app.js': { template: 'webapp.template.js' },
+     './assets/app/:filename/views': { folder: {} },
+     './assets/app/:filename/controllers': { folder: {} },
+     './assets/app/:filename/models': { folder: {} },
+     './assets/app/:filename/directives': { folder: {} },
+     './assets/app/:filename/filters': { folder: {} },
+     './assets/app/:filename/services': { folder: {} },
+     './assets/app/:filename/translations': { folder: {} },
+     './assets/app/:filename/components': { folder: {} },
+     './assets/app/:filename/reducers': { folder: {} },
+     './assets/app/:filename/actions': { folder: {} },
+     */
   },
 
 
@@ -141,9 +147,6 @@ module.exports = {
    */
   templatesDirectory: require('path').resolve(__dirname, './templates')
 };
-
-
-
 
 
 /**
@@ -160,14 +163,14 @@ module.exports = {
  * @api private
  */
 
-function INVALID_SCOPE_VARIABLE (varname, details, message) {
+function INVALID_SCOPE_VARIABLE(varname, details, message) {
   var DEFAULT_MESSAGE =
-  'Issue encountered in generator "sails-permissions-auth-browserify-multilayout":\n'+
-  'Missing required scope variable: `%s`"\n' +
-  'If you are the author of `sails-generate-sails-permissions-auth-browserify-multilayout`, please resolve this '+
-  'issue and publish a new patch release.';
+    'Issue encountered in generator "sails-permissions-auth-browserify-multilayout":\n' +
+    'Missing required scope variable: `%s`"\n' +
+    'If you are the author of `sails-generate-sails-permissions-auth-browserify-multilayout`, please resolve this ' +
+    'issue and publish a new patch release.';
 
-  message = (message || DEFAULT_MESSAGE) + (details ? '\n'+details : '');
+  message = (message || DEFAULT_MESSAGE) + (details ? '\n' + details : '');
   message = util.inspect(message, varname);
 
   return new Error(message);
